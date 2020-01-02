@@ -18,7 +18,7 @@ const drawerWidth = 240;
 const theme = createMuiTheme({
   mixins: {
     toolbar: {
-      height: 33,
+      height: 64,
       minHeight: 20,
     }
   },
