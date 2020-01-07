@@ -129,7 +129,7 @@ export default function PersistentDrawerLeft() {
       </AppBar>
       <div className='d-flex flex-row'>
         <Drawer
-          className={`${classes.drawer} w-25`}
+          className={`${classes.drawer} `}
           variant="persistent"
           anchor="left"
           open={open}
