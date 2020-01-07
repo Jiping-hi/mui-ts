@@ -152,16 +152,13 @@ export default function PersistentDrawerLeft() {
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: open,
-        })}
+        }, 'd-flex', 'flex-column', 'align-items-stretch')}
+        style={{height: '100%'}}
       >
         <div className={classes.drawerHeader} />
-        <div> <MyList id={333} /></div>
-        <div><Typography paragraph>
-          app-div-1
-        </Typography></div>
-        <div><Typography paragraph>
-          app-div-2
-        </Typography></div >
+        <div>app-div-1</div>
+        <div>app-div-2</div >
+        <MyList id={333} />
       </main>
     </div>
   );
