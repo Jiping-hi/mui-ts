@@ -27,7 +27,17 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "globals": {
+      "Promise": true,
+      "System": true,
+      "SystemJS": true,
+      "define": true,
+      "config": true
+    },
+    "env": {
+      "browser": true
+    }
   },
   "browserslist": {
     "production": [
@@ -40,5 +50,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "systemjs": "^0.20.12",
+    "@types/systemjs": "^0.20.7",
+    "getlibs": "^0.1.1"
   }
 }
