@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     content: {
       flexGrow: 1,
-      padding: theme.spacing(3),
+      padding: theme.spacing(1),
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -166,8 +166,7 @@ export default function PersistentDrawerLeft() {
           style={{ height: '100%' }}
         >
           <div className={classes.drawerHeader} />
-          <div>app-div-1</div>
-          <div>app-div-2</div >
+
           <MyList id={333} />
         </main>
       </div>
