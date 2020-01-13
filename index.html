@@ -10,16 +10,20 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>React App</title>
-  <script src="//unpkg.com/getlibs"></script>
+  <script src="//unpkg.com/getlibs/dist/src.js"></script>
   <script src="/index.config.js"></script>
-
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
   <div id="root">loading ...</div>
   <script>
-    const rootUrl = `src/P1`; //login screen
-
+    const rootUrl = `src/App`; //login screen
+    const process = {
+      env: {
+        NODE_ENV: 'production'
+      }
+    }
     window.addEventListener('DOMContentLoaded', event => {
       if (typeof rootUrl !== 'string') {
         console.warn('no appUrl');

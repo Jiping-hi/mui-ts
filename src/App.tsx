@@ -1,24 +1,25 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import { MyList } from './List';
+import { makeStyles, useTheme, Theme, createStyles, CssBaseline, AppBar, Toolbar, IconButton, Typography, Drawer, Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+// import CssBaseline from '@material-ui/core/CssBaseline';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
+// import List from '@material-ui/core/List';
+// import Typography from '@material-ui/core/Typography';
+// import Divider from '@material-ui/core/Divider';
+// import IconButton from '@material-ui/core/IconButton';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemText from '@material-ui/core/ListItemText';
 
+// import MenuIcon from '@material-ui/icons/Menu';
+// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import MailIcon from '@material-ui/icons/Mail';
+const InboxIcon = <i className="material-icons">inbox</i>
+const MailIcon = <i className="material-icons">mail</i>
+
+// import { MyList } from './List';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -83,6 +84,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
@@ -107,7 +109,7 @@ export default function PersistentDrawerLeft() {
           {
             open ?
               <IconButton onClick={handleDrawerClose} color="inherit">
-                <ChevronLeftIcon />
+                <i className="material-icons">chevron_left</i>
               </IconButton>
               : <IconButton
                 color="inherit"
@@ -116,7 +118,7 @@ export default function PersistentDrawerLeft() {
                 edge="start"
                 className={clsx(classes.menuButton, open && classes.hide)}
               >
-                <MenuIcon />
+                <i className="material-icons">menu</i>
               </IconButton>
 
           }
@@ -144,7 +146,7 @@ export default function PersistentDrawerLeft() {
           <List>
             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemIcon>{index % 2 === 0 ? InboxIcon : MailIcon}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
@@ -153,7 +155,7 @@ export default function PersistentDrawerLeft() {
           <List>
             {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemIcon>{index % 2 === 0 ? InboxIcon : MailIcon }</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
@@ -167,7 +169,7 @@ export default function PersistentDrawerLeft() {
         >
           <div className={classes.drawerHeader} />
 
-          <MyList id={333} />
+          {/* <MyList id={333} /> */}
         </main>
       </div>
     </div>

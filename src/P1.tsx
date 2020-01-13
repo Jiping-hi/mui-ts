@@ -3,8 +3,9 @@ import React from 'react'
 import 'src/index.css'
 export function P1(){
   return(
-    <div>
-      P1
+    <div className='d-flex flex-row' style={{}}>
+      <div>paragraph-1</div>
+      <div>paragraph-2</div>
     </div>
   )
 }
