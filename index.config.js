@@ -90,7 +90,7 @@ window.addEventListener('DOMContentLoaded', event => {
     console.warn('no appUrl');
     return;
   }
-  //@ts-ignore
+  /*global appProps */
   let props = typeof appProps === 'undefined' ? {} : appProps;
 
   Promise.all(
