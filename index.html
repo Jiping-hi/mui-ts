@@ -9,15 +9,50 @@
   <meta name="description" content="Web site created using create-react-app" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script src="/node_modules/react/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="/node_modules/react-dom/umd/react-dom.development.js"></script>
+  <!-- <script src="https://unpkg.com/prop-types@15.7.2/prop-types.min.js"></script> -->
+  <script src="/node_modules/react-router-dom/umd/react-router-dom.js"></script>
+  <script src="/node_modules/clsx/dist/clsx.min.js"></script>
+  <script src="/node_modules/qs/dist/qs.js"></script>
+  <script src="/node_modules/@material-ui/core/umd/material-ui.development.js" crossorigin="anonymous"></script>
+  <!-- <script src="/node_modules/anychart/dist/js/anychart-bundle.min.js"></script> -->
+  <!-- <script src="/node_modules/@babel/polyfill/dist/polyfill.min.js"></script> -->
+  <script src="/node_modules/jquery/dist/jquery.js"></script>
+  <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script> -->
+  <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
+  <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+  <script src="/node_modules/json5/dist/index.min.js"></script>
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>React App</title>
   <script src="/node_modules/getlibs/dist/src.js"></script>
   <script src="/index.config.js"></script>
+
 </head>
 
 <body>
   <div id="root">loading ...</div>
   <script>
+    //configurable
+    const rootUrl = `src/App`; //login screen 
+    // const rootUrl = `src/HiGrid`; //login screen
+
+    /*global appProps */
+    let props = typeof appProps === 'undefined' ? {} : appProps;
+
+    Promise.all([rootUrl].map(x => SystemJS.import(x))).then(modules => {
+      const [AppModule] = modules;
+      const config = SystemJS.getConfig();
+      console.info({ React: React.version, SystemJS: System.version, config });
+      const appId = 1;
+      const rootComponent = AppModule.default;
+      const rootElement = React.createElement(rootComponent, { id: appId });
+      ReactDOM.render(rootElement, document.querySelector('#root'));
+
+    });
 
   </script>
 </body>
