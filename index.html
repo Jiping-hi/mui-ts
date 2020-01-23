@@ -9,49 +9,16 @@
   <meta name="description" content="Web site created using create-react-app" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <title>React App</title>
-  <script src="//unpkg.com/getlibs/dist/src.js"></script>
-  <script src="/index.config.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>React App</title>
+  <script src="/node_modules/getlibs/dist/src.js"></script>
+  <script src="/index.config.js"></script>
 </head>
 
 <body>
   <div id="root">loading ...</div>
   <script>
-    const rootUrl = `src/App`; //login screen
-    const process = {
-      env: {
-        NODE_ENV: 'production'
-      }
-    }
-    window.addEventListener('DOMContentLoaded', event => {
-      if (typeof rootUrl !== 'string') {
-        console.warn('no appUrl');
-        return;
-      }
-      //@ts-ignore
-      let props = typeof appProps === 'undefined' ? {} : appProps;
 
-      Promise.all(
-        ['react', 'react-dom', 'react-router-dom', 'clsx', '@material-ui/core'].map(x => SystemJS.import(x))
-      ).then(modules => {
-        const [React, ReactDOM, ReactRouterDOM, clsx, mui] = modules;
-        console.debug('mui', mui);
-        window.MaterialUI = mui;
-        window.React = React;
-        window.ReactDOM = ReactDOM;
-        window.clsx = clsx;
-        window.ReactRouterDOM = ReactRouterDOM;
-        const config = SystemJS.getConfig();
-        console.info({ React: React.version, SystemJS: System.version, config });
-        const appId = 1;
-        System.import(rootUrl).then(AppModule => {
-          const rootComponent = AppModule.default;
-          const rootElement = React.createElement(rootComponent, { id: appId });
-          ReactDOM.render(rootElement, document.querySelector('#root'));
-        });
-      });
-    });
   </script>
 </body>
 
