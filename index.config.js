@@ -111,7 +111,9 @@ window.addEventListener('DOMContentLoaded', event => {
       '@material-ui/core/SvgIcon': MaterialUI.SvgIcon,
     };
     for (const m in externals) {
-      System.set(m, System.newModule(externals[m]))
+      // System.set(m, System.newModule(externals[m]))
+      System.set(m, System.newModule({ default: externals[m], __useDefault: true, }))
+
     }
 
     const config = SystemJS.getConfig();
