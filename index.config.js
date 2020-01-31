@@ -1,5 +1,36 @@
 /* global React, ReactDOM, MaterialUI */
-//SystemJS settings
+
+// user config
+const externals = {}
+/**@type { SystemJSLoader.ConfigMap} */
+
+/** @type{ {[module: string] : { globalName:string, map:string`} }} */
+const config = {
+  'react': { globalName: 'React', map: '/node_modules/@material-ui/core/umd/material-ui.development.js' },
+  'react-dom': { globalName: 'ReactDOM', map: '/node_modules/react-dom/umd/react-dom.development.js' },
+  '@material-ui': { globalName: 'MaterialUI', map: '/node_modules/@material-ui/core/umd/material-ui.development.js' },
+}
+
+//system code
+const map = {}
+for (const [mod, v] in Object.entries(config)) {
+  console.debug(mod, v)
+}
+
+if (window.React) externals['react'] = window.React; else map['react'] = '/node_modules/@material-ui/core/umd/material-ui.development.js'
+if (window.ReactDOM) externals['react-dom'] = window.ReactDOM;
+if (window.MaterialUI) externals['@material-ui/core'] = window.MaterialUI;
+
+for (const m in externals) {
+  console.debug('external: ', m, externals[m])
+  if (externals[m].default)
+    SystemJS.set(m, SystemJS.newModule(externals[m]))
+  else
+    SystemJS.set(m, SystemJS.newModule({ default: externals[m], __useDefault: true, ...externals[m] }))
+  // System.set(m, System.newModule({ default: externals[m], __useDefault: true, }))
+}
+
+//SystemJS.config
 SystemJS.config({
   paths: {
     api: '/api',
@@ -42,11 +73,14 @@ SystemJS.config({
     'ag-grid-community': 'npm:ag-grid-community',
     'ag-grid-enterprise': 'npm:ag-grid-enterprise',
     'css-properties.js': 'css-properties/index.js',
+    // 'react': '/node_modules/@material-ui/core/umd/material-ui.development.js',
+    // 'react-dom': '/node_modules/react-dom/umd/react-dom.development.js',
   },
   typescriptOptions: {
-    jsx: 'react'
+    jsx: 'react',
+    // tsconfig: '/tsconfig.json',
   },
-  transpiler: 'plugin-typescript',
+  transpiler: 'plugin-typescript', // 'plugin-typescript',
   meta: {
 
   },
@@ -54,17 +88,7 @@ SystemJS.config({
 });
 
 
-// globals
-let externals = {
-  "react": { default: React },
-  "react-dom": ReactDOM,
-  '@material-ui/core': MaterialUI,
-};
-for (const m in externals) {
-  System.set(m, System.newModule(externals[m]))
-  // System.set(m, System.newModule({ default: externals[m], __useDefault: true, }))
 
-}
 
 window.addEventListener('DOMContentLoaded', event => {
 

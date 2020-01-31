@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { makeStyles, useTheme, Theme, createStyles, CssBaseline, AppBar, Toolbar, IconButton, Typography, Drawer, Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import AllMails from './Elements/AllMails';
 import Trash from './Elements/Trash';
+import P1 from './P1';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 // import AppBar from '@material-ui/core/AppBar';
 // import Toolbar from '@material-ui/core/Toolbar';
@@ -88,12 +89,17 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function PersistentDrawerLeft() {
-  console.log('Drawer')
+  const v1 = 'v1'
+
+  console.log('Drawer2')
+  const v2 = v1?.length
+  console.log(`v2, ${v2}`)
   const trashElement = React.useMemo(() => <Trash />, [])
   const menuItems: { [key: string]: JSX.Element } = {
     'All mail': <AllMails />,
     'Trash': trashElement,
     'Spam': <div>Spam</div>,
+    'P1': <P1 />,
   }
 
   const classes = useStyles();
@@ -109,7 +115,7 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
-  const [view, setView] = React.useState(<div data-about='palceholder'>...</div>)
+  const [view, setView] = React.useState(menuItems['P1'])
   const [selectedIndex, setSelectedIndex] = React.useState(-1)
 
   return (
@@ -169,9 +175,10 @@ export default function PersistentDrawerLeft() {
           </List>
           <Divider />
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+            {['All mail', 'Trash', 'Spam', 'P1'].map((text, index) => (
               <ListItem button key={text} selected={selectedIndex === index}
                 onClick={event => {
+                  console.debug('click', text)
                   setSelectedIndex(index)
                   setView(menuItems[text])
                 }}
@@ -189,7 +196,9 @@ export default function PersistentDrawerLeft() {
           style={{ height: '100%' }}
         >
           <div className={classes.drawerHeader} />
-          {selectedIndex === 1 ? item2 : item0}
+          {view}
+          {/* {selectedIndex === 1 ? item2 : item0} */}
+
           {/* <MyList id={333} /> */}
         </main>
       </div>
