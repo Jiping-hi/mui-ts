@@ -4,6 +4,7 @@ import { makeStyles, useTheme, Theme, createStyles, CssBaseline, AppBar, Toolbar
 import AllMails from './Elements/AllMails';
 import Trash from './Elements/Trash';
 import P1 from './P1';
+import { HiGrid } from './HiGrid';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 // import AppBar from '@material-ui/core/AppBar';
 // import Toolbar from '@material-ui/core/Toolbar';
@@ -98,7 +99,7 @@ export default function PersistentDrawerLeft() {
   const menuItems: { [key: string]: JSX.Element } = {
     'All mail': <AllMails />,
     'Trash': trashElement,
-    'Spam': <div>Spam</div>,
+    'Ag-Grid': <HiGrid></HiGrid>,
     'P1': <P1 />,
   }
 
@@ -161,21 +162,10 @@ export default function PersistentDrawerLeft() {
             paper: classes.drawerPaper,
           }}
         >
-          <div className={classes.drawerHeader}>
-
-          </div>
+          <div className={classes.drawerHeader}></div>
           <Divider />
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? InboxIcon : MailIcon}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam', 'P1'].map((text, index) => (
+            {['All mail', 'Trash', 'Ag-Grid', 'P1'].map((text, index) => (
               <ListItem button key={text} selected={selectedIndex === index}
                 onClick={event => {
                   console.debug('click', text)
