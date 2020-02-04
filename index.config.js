@@ -9,7 +9,9 @@ const externals = {
   '@material-ui/core': {
     globalName: 'MaterialUI',
     mapPath: '/node_modules/@material-ui/core/umd/material-ui.development.js'
-  }
+  },
+  // 'ag-grid-community': { globalName: 'agGrid', mapPath: 'npm:ag-grid-community' },
+  // 'ag-grid-react': { globalName: 'AgGridReact', mapPath: 'npm:ag-grid-react', main: '/umd/ag-grid-react.min.js' },
 };
 
 //system code
@@ -68,8 +70,14 @@ SystemJS.config({
       format: 'amd'
     },
     'ag-grid-community': {
-      main: './dist/ag-grid-community.cjs.js'
-    }
+      main: './dist/ag-grid-community.js'
+    },
+    'ag-grid-enterprise': {
+      main: './dist/ag-grid-enterprise.js'
+    },
+    'ag-grid-react': {
+      main: './umd/ag-grid-react.min.js'
+    },
   },
   map: {
     ...mapList,
@@ -81,7 +89,7 @@ SystemJS.config({
     'react-is': '/node_modules/react-is/umd/react-is.development.js',
     'prop-types': 'npm:prop-types/prop-types.js',
 
-    'ag-grid-react': 'npm:ag-grid-react/umd/ag-grid-react.min.js',
+    'ag-grid-react': 'npm:ag-grid-react',
     'ag-grid-community': 'npm:ag-grid-community',
     'ag-grid-enterprise': 'npm:ag-grid-enterprise',
     'css-properties.js': 'css-properties/index.js'
