@@ -4,12 +4,12 @@
 
 /** @type{ {[moduleName: string] : { globalName:string, mapPath:string`} }} */
 const externals = {
-  react: { globalName: 'React', mapPath: '/node_modules/react/umd/react.development.js' },
-  'react-dom': { globalName: 'ReactDOM', mapPath: '/node_modules/react-dom/umd/react-dom.development.js' },
-  '@material-ui/core': {
-    globalName: 'MaterialUI',
-    mapPath: '/node_modules/@material-ui/core/umd/material-ui.development.js'
-  },
+  // react: { globalName: 'React', mapPath: '/node_modules/react/umd/react.development.js' },
+  // 'react-dom': { globalName: 'ReactDOM', mapPath: '/node_modules/react-dom/umd/react-dom.development.js' },
+  // '@material-ui/core': {
+  //   globalName: 'MaterialUI',
+  //   mapPath: '/node_modules/@material-ui/core/umd/material-ui.development.js'
+  // },
   // 'ag-grid-community': { globalName: 'agGrid', mapPath: 'npm:ag-grid-community' },
   // 'ag-grid-react': { globalName: 'AgGridReact', mapPath: 'npm:ag-grid-react', main: '/umd/ag-grid-react.min.js' },
 };
@@ -61,13 +61,14 @@ SystemJS.config({
       defaultExtension: ''
     },
     react: {
-      format: 'global'
+      'main': './umd/react.development.js',
     },
     'react-dom': {
-      format: 'global'
+      'main': './umd/react-dom.development.js',
     },
     '@material-ui/core': {
-      format: 'amd'
+      main: './umd/material-ui.development.js',
+      // 'format': 'global',
     },
     'ag-grid-community': {
       main: './dist/ag-grid-community.js'
@@ -77,10 +78,12 @@ SystemJS.config({
     },
     'ag-grid-react': {
       main: './umd/ag-grid-react.min.js'
-    },
+    }
   },
   map: {
     ...mapList,
+    'react': 'npm:react',
+    'react-dom': 'npm:react-dom',
     //'typescript': 'https://unpkg.com/typescript@3.7.2/lib/typescript.js',
     //'typescript': 'https://cdnjs.cloudflare.com/ajax/libs/typescript/2.6.2', //getlibs original
     // typescript: 'https://cdnjs.cloudflare.com/ajax/libs/typescript/3.7.2',
@@ -88,6 +91,7 @@ SystemJS.config({
 
     'react-is': '/node_modules/react-is/umd/react-is.development.js',
     'prop-types': 'npm:prop-types/prop-types.js',
+    '@material-ui/core': 'npm:@material-ui/core',
 
     'ag-grid-react': 'npm:ag-grid-react',
     'ag-grid-community': 'npm:ag-grid-community',

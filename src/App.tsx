@@ -90,6 +90,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function PersistentDrawerLeft() {
+  console.debug('function PersistentDrawerLeft')
   const v1 = 'v1'
 
   console.log('Drawer2')
